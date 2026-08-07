@@ -35,20 +35,16 @@ OS-LAB/
 └── Lab2/                      <- Lab Assignment 2
     ├── README.md              <- Full answers, Q1 Notebook Guide & Q2-Q6 code details
     ├── q2_proc_monitor.sh     <- /proc filesystem performance monitoring script
-    ├── q3_fork.c              <- Child process creation using fork()
+    ├── q3_fork.cpp            <- Child process creation using fork() [C++]
     ├── q4_aslr.sh             <- Shell script for enabling/disabling ASLR
-    ├── q5_variable_sharing.c  <- Parent/Child variable sharing & memory address analysis
-    ├── q6_syscalls.c          <- Combined fork(), wait(), exit(), and execv() program
-    └── ostep_code/            <- OSTEP Chapter 2-5 demo code (finite loops)
+    ├── q5_variable_sharing.cpp<- Parent/Child variable sharing & memory address analysis [C++]
+    ├── q6_syscalls.cpp        <- Combined fork(), wait(), exit(), and execv() program [C++]
+    └── ostep_code/            <- OSTEP Chapter 2-5 demo code (finite loops) [C++]
         ├── common.h
-        ├── cpu.c
-        ├── mem.c
-        ├── threads.c
-        ├── io.c
-        ├── p1.c
-        ├── p2.c
-        ├── p3.c
-        └── p4.c
+        ├── cpu.cpp
+        ├── mem.cpp
+        ├── threads.cpp
+        └── io.cpp
 ```
 
 ---
@@ -72,10 +68,10 @@ cd OS-LAB/Lab2
 
 # 1. Run /proc performance monitor
 chmod +x q2_proc_monitor.sh
-./q2_proc_monitor.sh 2 10
+./q2_proc_monitor.sh
 
 # 2. Compile and run Fork process demo (Q3)
-gcc -o q3_fork q3_fork.c
+g++ -o q3_fork q3_fork.cpp
 ./q3_fork
 
 # 3. Check and manage ASLR (Q4)
@@ -83,10 +79,10 @@ chmod +x q4_aslr.sh
 ./q4_aslr.sh
 
 # 4. Test Variable Sharing & Virtual Addresses (Q5)
-gcc -o q5_variable_sharing q5_variable_sharing.c
+g++ -o q5_variable_sharing q5_variable_sharing.cpp
 ./q5_variable_sharing
 
 # 5. System Calls implementation (Q6)
-gcc -o q6_syscalls q6_syscalls.c
+g++ -o q6_syscalls q6_syscalls.cpp
 ./q6_syscalls
 ```
