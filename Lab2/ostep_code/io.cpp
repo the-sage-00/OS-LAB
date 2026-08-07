@@ -1,24 +1,22 @@
-#include <iostream>
-#include <cstdlib>
+// OSTEP persistence demo - write data to a file
+#include <bits/stdc++.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <assert.h>
-#include <sys/types.h>
-#include <string.h>
+using namespace std;
 
-int main(int argc, char *argv[]) {
-    int fd = open("/tmp/file.txt", O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
-    assert(fd >= 0);
-    
-    char buffer[100];
-    snprintf(buffer, sizeof(buffer), "Hello World from OSTEP Persistence Demo C++ (PID: %d)\n", getpid());
-    
-    int rc = write(fd, buffer, strlen(buffer));
-    assert(rc == (int) strlen(buffer));
-    
+int main() {
+    int fd = open("/tmp/file.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+    if (fd < 0) {
+        cout << "Failed to open file!" << endl;
+        return 1;
+    }
+
+    char buf[100];
+    sprintf(buf, "Hello from OSTEP IO demo (PID: %d)\n", getpid());
+    write(fd, buf, strlen(buf));
     fsync(fd);
     close(fd);
-    
-    std::cout << "Successfully wrote persistent data to /tmp/file.txt\n";
+
+    cout << "Wrote data to /tmp/file.txt successfully." << endl;
     return 0;
 }

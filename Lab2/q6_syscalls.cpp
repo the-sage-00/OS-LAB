@@ -1,64 +1,44 @@
-/*
- * OS Lab Assignment 2 — Question 6: Complete System Call Program [C++]
- * Implements fork(), wait(), exit(), and execv() system calls in C++ (g++).
- */
-
-#include <iostream>
-#include <cstdlib>
+// Q6: Demo of fork(), wait(), exit(), execv()
+#include <bits/stdc++.h>
 #include <unistd.h>
-#include <sys/types.h>
 #include <sys/wait.h>
+using namespace std;
 
 int main() {
-    std::cout << "======================================================================\n";
-    std::cout << "     Question 6: Demonstration of fork(), wait(), exit(), execv() [C++] \n";
-    std::cout << "======================================================================\n";
-    std::cout << "Parent Process (PID: " << getpid() << ") starting...\n" << std::endl;
+    cout << "=== System Calls Demo ===" << endl;
+    cout << "Parent PID: " << getpid() << endl;
 
-    // 1. System Call: fork()
-    pid_t pid = fork();
+    pid_t pid = fork(); // create child
 
     if (pid < 0) {
-        std::cerr << "fork failed!" << std::endl;
-        // 2. System Call: exit() on error
-        exit(EXIT_FAILURE);
-    } 
+        cout << "fork failed!" << endl;
+        exit(1);
+    }
     else if (pid == 0) {
-        // Child Process
-        std::cout << "[CHILD PROCESS] PID: " << getpid() << std::endl;
-        std::cout << "[CHILD PROCESS] Preparing arguments for execv()..." << std::endl;
+        // child runs ls command using execv
+        cout << "[Child] PID: " << getpid() << endl;
+        cout << "[Child] Running execv to list files..." << endl;
+        cout << "---" << endl;
 
-        // Arguments for execv (must be NULL-terminated array)
-        char *args[] = { (char*)"/bin/ls", (char*)"-l", (char*)"-h", NULL };
-
-        std::cout << "[CHILD PROCESS] Calling execv('/bin/ls', args)..." << std::endl;
-        std::cout << "----------------------------------------------------------------------" << std::endl;
-        
-        // 3. System Call: execv()
+        char *args[] = {(char*)"/bin/ls", (char*)"-l", (char*)"-h", NULL};
         execv(args[0], args);
 
-        // If execv returns, it means an error occurred
-        std::cerr << "execv failed!" << std::endl;
-        // 4. System Call: exit()
-        exit(EXIT_FAILURE);
-    } 
+        // this only runs if execv failed
+        cout << "execv failed!" << endl;
+        exit(1);
+    }
     else {
-        // Parent Process
-        std::cout << "[PARENT PROCESS] PID: " << getpid() << " created Child PID: " << pid << std::endl;
-        std::cout << "[PARENT PROCESS] Waiting for child process to complete..." << std::endl;
+        // parent waits for child
+        cout << "[Parent] Waiting for child " << pid << "..." << endl;
 
         int status;
-        // 5. System Call: wait()
-        pid_t wpid = wait(&status);
+        pid_t w = wait(&status);
 
-        std::cout << "\n----------------------------------------------------------------------" << std::endl;
-        std::cout << "[PARENT PROCESS] Child PID " << wpid << " terminated." << std::endl;
-        if (WIFEXITED(status)) {
-            std::cout << "[PARENT PROCESS] Child exited normally with status: " << WEXITSTATUS(status) << std::endl;
-        } else {
-            std::cout << "[PARENT PROCESS] Child terminated abnormally." << std::endl;
-        }
-        std::cout << "======================================================================" << std::endl;
+        cout << "---" << endl;
+        cout << "[Parent] Child " << w << " finished";
+        if (WIFEXITED(status))
+            cout << " with exit code " << WEXITSTATUS(status);
+        cout << endl;
     }
 
     return 0;

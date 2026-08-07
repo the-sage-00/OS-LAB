@@ -1,34 +1,32 @@
-#include <iostream>
-#include <cstdlib>
+// OSTEP concurrency demo - shows race condition with threads
+#include <bits/stdc++.h>
 #include <pthread.h>
-#include "common.h"
+using namespace std;
 
 volatile int counter = 0;
 int loops;
 
 void *worker(void *arg) {
-    for (int i = 0; i < loops; i++) {
+    for (int i = 0; i < loops; i++)
         counter++;
-    }
     return NULL;
 }
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <loops>\n";
+        cout << "Usage: ./threads <loops>" << endl;
         return 1;
     }
-    loops = std::atoi(argv[1]);
-    pthread_t p1, p2;
+    loops = atoi(argv[1]);
 
-    std::cout << "Initial counter value: " << counter << "\n";
+    pthread_t t1, t2;
+    cout << "Start: counter = " << counter << endl;
 
-    pthread_create(&p1, NULL, worker, NULL);
-    pthread_create(&p2, NULL, worker, NULL);
+    pthread_create(&t1, NULL, worker, NULL);
+    pthread_create(&t2, NULL, worker, NULL);
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
 
-    pthread_join(p1, NULL);
-    pthread_join(p2, NULL);
-
-    std::cout << "Final counter value  : " << counter << " (Expected: " << loops * 2 << ")\n";
+    cout << "End: counter = " << counter << " (expected " << loops * 2 << ")" << endl;
     return 0;
 }

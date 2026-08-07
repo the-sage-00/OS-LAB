@@ -1,49 +1,36 @@
-/*
- * OS Lab Assignment 2 — Question 3: Child Process Creation using fork() [C++]
- * Demonstrates fork() system call, return values, PID inspection,
- * and execution path branching between Parent and Child using C++ (g++).
- */
-
-#include <iostream>
-#include <cstdlib>
+// Q3: Create child process using fork()
+#include <bits/stdc++.h>
 #include <unistd.h>
-#include <sys/types.h>
 #include <sys/wait.h>
+using namespace std;
 
 int main() {
-    std::cout << "=== Question 3: Fork System Call Demo (C++) ===" << std::endl;
-    std::cout << "Parent Process Started (PID: " << getpid() << ")\n" << std::endl;
+    cout << "=== Fork Demo ===" << endl;
+    cout << "Parent started, PID: " << getpid() << endl;
 
-    // Create a new child process
     pid_t pid = fork();
 
     if (pid < 0) {
-        // Fork failed
-        std::cerr << "fork failed!" << std::endl;
-        return EXIT_FAILURE;
-    } 
+        cout << "fork failed!" << endl;
+        return 1;
+    }
     else if (pid == 0) {
-        // Child Process Branch
-        std::cout << "[CHILD PROCESS]" << std::endl;
-        std::cout << "  My PID          : " << getpid() << std::endl;
-        std::cout << "  My Parent PID   : " << getppid() << std::endl;
-        std::cout << "  fork() return   : " << pid << std::endl;
-        std::cout << "Child process exiting gracefully...\n" << std::endl;
+        // child process
+        cout << "\n[Child] My PID: " << getpid() << endl;
+        cout << "[Child] Parent's PID: " << getppid() << endl;
+        cout << "[Child] fork() returned: " << pid << endl;
         exit(0);
-    } 
+    }
     else {
-        // Parent Process Branch
-        std::cout << "[PARENT PROCESS]" << std::endl;
-        std::cout << "  My PID          : " << getpid() << std::endl;
-        std::cout << "  Created Child   : " << pid << std::endl;
-        std::cout << "  fork() return   : " << pid << std::endl;
-        
-        // Wait for child to complete
+        // parent process
+        cout << "\n[Parent] My PID: " << getpid() << endl;
+        cout << "[Parent] Child PID: " << pid << endl;
+
         int status;
         wait(&status);
-        std::cout << "Parent confirmed child (PID: " << pid << ") exited with status: " << WEXITSTATUS(status) << std::endl;
+        cout << "[Parent] Child exited with status: " << WEXITSTATUS(status) << endl;
     }
 
-    std::cout << "Main program ended cleanly." << std::endl;
+    cout << "\nDone." << endl;
     return 0;
 }

@@ -1,24 +1,22 @@
-#include <iostream>
-#include <cstdlib>
+// OSTEP memory virtualization demo (finite loop version)
+#include <bits/stdc++.h>
 #include <unistd.h>
 #include "common.h"
+using namespace std;
 
 int main(int argc, char *argv[]) {
-    int max_loops = (argc >= 2) ? std::atoi(argv[1]) : 5; // Default 5 iterations instead of infinite loop
+    int n = (argc >= 2) ? atoi(argv[1]) : 5;
 
-    int *p = (int*) malloc(sizeof(int));
-    assert(p != NULL);
-    std::cout << "(PID:" << getpid() << ") address pointed to by p: " << (void*)p << "\n";
-    *p = 0;
+    int *p = new int(0);
+    cout << "(PID:" << getpid() << ") p is at address: " << p << endl;
 
-    std::cout << "Executing Memory Virtualization Demo for " << max_loops << " iterations...\n";
-    for (int i = 1; i <= max_loops; i++) {
+    for (int i = 1; i <= n; i++) {
         Spin(1);
-        *p = *p + 1;
-        std::cout << "[" << i << "/" << max_loops << "] (PID:" << getpid() << ") p: " << *p << " (Address: " << (void*)p << ")\n";
+        (*p)++;
+        cout << "[" << i << "/" << n << "] (PID:" << getpid() << ") *p = " << *p << endl;
     }
 
-    free(p);
-    std::cout << "Execution complete.\n";
+    delete p;
+    cout << "Done." << endl;
     return 0;
 }

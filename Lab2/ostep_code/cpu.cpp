@@ -1,23 +1,22 @@
-#include <iostream>
-#include <cstdlib>
+// OSTEP cpu virtualization demo (finite loop version)
+#include <bits/stdc++.h>
 #include <unistd.h>
 #include "common.h"
+using namespace std;
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        std::cerr << "Usage: " << argv[0] << " <string> [loops]" << std::endl;
+        cout << "Usage: ./cpu <label> [loops]" << endl;
         return 1;
     }
-    
-    char *str = argv[1];
-    int max_loops = (argc >= 3) ? std::atoi(argv[2]) : 5; // Default 5 iterations instead of infinite loop
 
-    std::cout << "Executing CPU Virtualization Demo for " << max_loops << " iterations...\n";
-    for (int i = 1; i <= max_loops; i++) {
+    string label = argv[1];
+    int n = (argc >= 3) ? atoi(argv[2]) : 5;
+
+    for (int i = 1; i <= n; i++) {
         Spin(1);
-        std::cout << "[" << i << "/" << max_loops << "] " << str << " (PID: " << getpid() << ")\n";
+        cout << "[" << i << "/" << n << "] " << label << " (PID: " << getpid() << ")" << endl;
     }
-
-    std::cout << "Execution complete.\n";
+    cout << "Done." << endl;
     return 0;
 }
