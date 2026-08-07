@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
 #include <pthread.h>
 #include "common.h"
 
@@ -7,8 +7,7 @@ volatile int counter = 0;
 int loops;
 
 void *worker(void *arg) {
-    int i;
-    for (i = 0; i < loops; i++) {
+    for (int i = 0; i < loops; i++) {
         counter++;
     }
     return NULL;
@@ -16,13 +15,13 @@ void *worker(void *arg) {
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
-        fprintf(stderr, "Usage: %s <loops>\n", argv[0]);
-        exit(1);
+        std::cerr << "Usage: " << argv[0] << " <loops>\n";
+        return 1;
     }
-    loops = atoi(argv[1]);
+    loops = std::atoi(argv[1]);
     pthread_t p1, p2;
 
-    printf("Initial counter value: %d\n", counter);
+    std::cout << "Initial counter value: " << counter << "\n";
 
     pthread_create(&p1, NULL, worker, NULL);
     pthread_create(&p2, NULL, worker, NULL);
@@ -30,6 +29,6 @@ int main(int argc, char *argv[]) {
     pthread_join(p1, NULL);
     pthread_join(p2, NULL);
 
-    printf("Final counter value  : %d (Expected: %d)\n", counter, loops * 2);
+    std::cout << "Final counter value  : " << counter << " (Expected: " << loops * 2 << ")\n";
     return 0;
 }

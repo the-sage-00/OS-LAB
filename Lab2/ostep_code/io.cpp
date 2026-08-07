@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <cstdlib>
 #include <unistd.h>
 #include <fcntl.h>
 #include <assert.h>
@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     assert(fd >= 0);
     
     char buffer[100];
-    sprintf(buffer, "Hello World from OSTEP Persistence Demo (PID: %d)\n", getpid());
+    snprintf(buffer, sizeof(buffer), "Hello World from OSTEP Persistence Demo C++ (PID: %d)\n", getpid());
     
     int rc = write(fd, buffer, strlen(buffer));
     assert(rc == (int) strlen(buffer));
@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
     fsync(fd);
     close(fd);
     
-    printf("Successfully wrote persistent data to /tmp/file.txt\n");
+    std::cout << "Successfully wrote persistent data to /tmp/file.txt\n";
     return 0;
 }
