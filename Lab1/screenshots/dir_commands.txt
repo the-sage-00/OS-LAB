@@ -1,0 +1,39 @@
+saini@Thesage:~$ pwd
+/home/saini
+saini@Thesage:~$ ls
+OsLab
+saini@Thesage:~$ ls -l
+total 4
+drwxrwxr-x 2 saini saini 4096 Aug  4 17:47 OsLab
+saini@Thesage:~$ mkdir DemoDir
+saini@Thesage:~$ tree
+.
+├── DemoDir
+└── OsLab
+    └── lab1.txt
+
+3 directories, 1 file
+saini@Thesage:~$ cd DemoDir
+saini@Thesage:~/DemoDir$ pwd
+/home/saini/DemoDir
+saini@Thesage:~/DemoDir$ cd ..
+saini@Thesage:~$ rmdir DemoDir
+saini@Thesage:~$ touch file.txt
+saini@Thesage:~$ touch file2.txt
+saini@Thesage:~$ echo "Hello OS Lab" > file1.txt
+saini@Thesage:~$ echo "Hello Linux" > file2.txt
+saini@Thesage:~$ cat file1.txt
+Hello OS Lab
+saini@Thesage:~$ cp file1.txt copy.txt
+saini@Thesage:~$ mv copy.txt moved.txt
+saini@Thesage:~$ ls
+OsLab  file.txt  file1.txt  file2.txt  moved.txt
+saini@Thesage:~$ chmod 755 moved.txt
+saini@Thesage:~$ ls -l
+total 16
+drwxrwxr-x 2 saini saini 4096 Aug  4 17:47 OsLab
+-rw-rw-r-- 1 saini saini    0 Aug  4 17:52 file.txt
+-rw-rw-r-- 1 saini saini   13 Aug  4 17:52 file1.txt
+-rw-rw-r-- 1 saini saini   12 Aug  4 17:52 file2.txt
+-rwxr-xr-x 1 saini saini   13 Aug  4 17:53 moved.txt
+saini@Thesage:~$ ln -s file1.txt link.txt

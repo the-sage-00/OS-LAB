@@ -1,0 +1,6 @@
+saini@Thesage:~$ echo "Hello OS Lab"
+Hello OS Lab
+saini@Thesage:~$ which bash
+/usr/bin/bash
+saini@Thesage:~$ cat /etc/passwd | grep saini
+saini:x:1000:1000:saini,,,:/home/saini:/bin/bash

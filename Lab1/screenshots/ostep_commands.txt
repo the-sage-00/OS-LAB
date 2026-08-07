@@ -1,0 +1,23 @@
+saini@Thesage:~$ g++ -o p1 p1.cpp
+saini@Thesage:~$ ./p1
+hello world (pid:7210)
+hello, I am parent of 7211 (pid:7210)
+hello, I am child (pid:7211)
+
+saini@Thesage:~$ g++ -o p2 p2.cpp
+saini@Thesage:~$ ./p2
+hello world (pid:7218)
+hello, I am child (pid:7219)
+hello, I am parent of 7219 (wc:7219) (pid:7218)
+
+saini@Thesage:~$ g++ -o p3 p3.cpp
+saini@Thesage:~$ ./p3
+hello world (pid:7226)
+hello, I am child (pid:7227)
+ 23  78 710 p3.cpp
+hello, I am parent of 7227 (wc:7227) (pid:7226)
+
+saini@Thesage:~$ g++ -o p4 p4.cpp
+saini@Thesage:~$ ./p4
+saini@Thesage:~$ cat p4.output
+ 23  65 628 p4.cpp

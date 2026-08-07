@@ -1,0 +1,21 @@
+# Executables & Binaries
+*.out
+*.o
+*.bin
+*.exe
+p1
+p2
+p3
+p4
+cpu
+mem
+threads
+io
+q3_fork
+q5_variable_sharing
+q6_syscalls
+
+# Logs & Temporary Files
+*.log
+__pycache__/
+.DS_Store

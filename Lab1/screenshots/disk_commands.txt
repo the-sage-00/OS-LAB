@@ -1,0 +1,31 @@
+saini@Thesage:~$ du
+8       ./OsLab
+4       ./.config/procps
+8       ./.config
+4       ./.landscape
+60      .
+saini@Thesage:~$ du -sh .
+60K     .
+saini@Thesage:~$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+none            2.9G     0  2.9G   0% /usr/lib/modules/6.6.87.2-microsoft-standard-WSL2
+none            2.9G  4.0K  2.9G   1% /mnt/wsl
+drivers         251G  197G   54G  79% /usr/lib/wsl/drivers
+/dev/sdd       1007G  1.7G  954G   1% /
+none            2.9G   80K  2.9G   1% /mnt/wslg
+none            2.9G     0  2.9G   0% /usr/lib/wsl/lib
+rootfs          2.9G  2.7M  2.9G   1% /init
+none            2.9G  564K  2.9G   1% /run
+none            2.9G     0  2.9G   0% /run/lock
+none            2.9G     0  2.9G   0% /run/shm
+none            2.9G   76K  2.9G   1% /mnt/wslg/versions.txt
+none            2.9G   76K  2.9G   1% /mnt/wslg/doc
+C:\             251G  197G   54G  79% /mnt/c
+D:\             225G  103M  225G   1% /mnt/d
+tmpfs           578M   20K  578M   1% /run/user/1000
+tmpfs           578M   20K  578M   1% /run/user/1001
+saini@Thesage:~$ sudo fdisk -l
+Disk /dev/ram0: 4 MiB, 4194304 bytes, 8192 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes

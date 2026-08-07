@@ -1,0 +1,15 @@
+saini@Thesage:~$ cat /proc/version
+Linux version 6.6.87.2-microsoft-standard-WSL2 (oe-user@oe-host) (gcc version 11.4.0) #1 SMP PREEMPT_DYNAMIC 2025
+
+saini@Thesage:~$ cat /proc/uptime
+34215.42 120485.12
+
+saini@Thesage:~$ head -n 8 /proc/meminfo
+MemTotal:        8092400 kB
+MemFree:         4890120 kB
+MemAvailable:    6102400 kB
+Buffers:          115200 kB
+Cached:          1048200 kB
+SwapCached:            0 kB
+Active:          1320400 kB
+Inactive:         890100 kB
