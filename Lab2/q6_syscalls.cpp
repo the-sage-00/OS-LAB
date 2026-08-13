@@ -1,44 +1,40 @@
-// Q6: Demo of fork(), wait(), exit(), execv()
-#include <bits/stdc++.h>
+#include <iostream>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <cstdlib>
+
 using namespace std;
 
 int main() {
-    cout << "=== System Calls Demo ===" << endl;
-    cout << "Parent PID: " << getpid() << endl;
+    cout << "Parent process started." << endl;
 
-    pid_t pid = fork(); // create child
+    pid_t pid = fork();
 
     if (pid < 0) {
-        cout << "fork failed!" << endl;
-        exit(1);
+        cout << "Fork failed." << endl;
+        return 1;
     }
-    else if (pid == 0) {
-        // child runs ls command using execv
-        cout << "[Child] PID: " << getpid() << endl;
-        cout << "[Child] Running execv to list files..." << endl;
-        cout << "---" << endl;
 
-        char *args[] = {(char*)"/bin/ls", (char*)"-l", (char*)"-h", NULL};
-        execv(args[0], args);
+    if (pid == 0) {
+        // Child process
+        cout << "Child process started." << endl;
+        cout << "Child PID: " << getpid() << endl;
 
-        // this only runs if execv failed
-        cout << "execv failed!" << endl;
+        // Replace child program with ls
+        execl("/bin/ls", "ls", NULL);
+
+        // This executes only if exec fails
+        cout << "exec failed." << endl;
         exit(1);
     }
     else {
-        // parent waits for child
-        cout << "[Parent] Waiting for child " << pid << "..." << endl;
+        // Parent process
+        cout << "Parent is waiting for child..." << endl;
 
-        int status;
-        pid_t w = wait(&status);
+        wait(NULL);
 
-        cout << "---" << endl;
-        cout << "[Parent] Child " << w << " finished";
-        if (WIFEXITED(status))
-            cout << " with exit code " << WEXITSTATUS(status);
-        cout << endl;
+        cout << "Child has finished." << endl;
+        cout << "Parent is exiting." << endl;
     }
 
     return 0;

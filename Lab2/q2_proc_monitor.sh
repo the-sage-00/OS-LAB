@@ -1,28 +1,15 @@
 #!/bin/bash
-# Q2: Monitor system performance periodically using /proc filesystem
+# Question 2: Collect performance monitoring data periodically from /proc
 
-INTERVAL=2
-COUNT=5
-
-echo "Monitoring System Performance using /proc"
-
-for ((i=1; i<=COUNT; i++))
+exec >> performance.log
+while true
 do
-    echo "========== Sample $i =========="
+    echo "======================================================================"
     echo "Time: $(date)"
-
-    echo "CPU Stats:"
-    grep "^cpu " /proc/stat
-
-    echo "Memory Stats:"
-    grep -E "MemTotal|MemFree|MemAvailable" /proc/meminfo
-
-    echo "Running Processes:"
-    grep "procs_running" /proc/stat
-
-    echo "Uptime:"
-    cat /proc/uptime
-
-    echo "==============================="
-    sleep $INTERVAL
+    echo "CPU: $(grep "^cpu " /proc/stat)"
+    echo "Memory Available: $(grep "^MemAvailable" /proc/meminfo | awk '{print $2, $3}')"
+    echo "Load: $(awk '{print $1, $2, $3}' /proc/loadavg)"
+    echo "Uptime: $(awk '{print $1}' /proc/uptime) seconds"
+    echo "======================================================================"
+    sleep 5
 done
