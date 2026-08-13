@@ -1,3 +1,0 @@
-hello world (pid:451)
-hello, I am child (pid:452)
-hello, I am parent of 452 (wc:452) (pid:451)

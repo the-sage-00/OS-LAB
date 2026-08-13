@@ -1,4 +1,0 @@
-hello world (pid:453)
-hello, I am child (pid:454)
- 26 119 816 p3.cpp
-hello, I am parent of 454 (wc:454) (pid:453)
