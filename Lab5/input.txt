@@ -1,0 +1,1 @@
+   hello    world  ,  this   is   an   oPeRaTiNg   sYsTeM   lab .are   you   ready  ?yes  ! this   is   assignMent   5  ;we   use   three   processes   and   pipes   to   communicate   .   
