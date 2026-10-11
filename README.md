@@ -1,8 +1,8 @@
-# Operating System Laboratory — Course Repository
+﻿# Operating System Laboratory ΓÇö Course Repository
 
 Welcome to my official **Operating System Laboratory** repository. This repository contains structured solutions, C programs, shell scripts, and documentation for all lab assignments.
 
-## 👤 Student Information
+## ≡ƒæñ Student Information
 - **Name**: Rishi
 - **Roll Number**: 2024UCP1566
 - **Branch**: Computer Science & Engineering
@@ -11,7 +11,7 @@ Welcome to my official **Operating System Laboratory** repository. This reposito
 
 ---
 
-## 🎯 Repository Organization & Philosophy
+## ≡ƒÄ» Repository Organization & Philosophy
 
 I maintain this repository in a **disciplined, modular, and minimal way**:
 1. **Clean Directory Structure**: Every assignment is organized into its own dedicated folder (`Lab1/`, `Lab2/`, etc.).
@@ -20,45 +20,45 @@ I maintain this repository in a **disciplined, modular, and minimal way**:
 
 ---
 
-## 📁 Repository Sitemap
+## ≡ƒôü Repository Sitemap
 
 ```text
 OS-LAB/
-├── README.md                  <- Main repository overview
-│
-├── Lab1/                      <- Lab Assignment 1
-│   ├── README.md              <- Overview of commands, shell, GCC, OSTEP API & Booting
-│   ├── OS_Lab_2024UCP1566.docx<- Complete assignment report
-│   ├── ostep_code/            <- C implementations of OSTEP CPU API (p1.c - p4.c)
-│   └── screenshots/           <- Real terminal output logs & screenshots
-│
-└── Lab2/                      <- Lab Assignment 2
-    ├── README.md              <- Full answers, Q1 Notebook Guide & Q2-Q6 code details
-    ├── q2_proc_monitor.sh     <- /proc filesystem performance monitoring script
-    ├── q3_fork.cpp            <- Child process creation using fork() [C++]
-    ├── q4_aslr.sh             <- Shell script for enabling/disabling ASLR
-    ├── q5_variable_sharing.cpp<- Parent/Child variable sharing & memory address analysis [C++]
-    ├── q6_syscalls.cpp        <- Combined fork(), wait(), exit(), and execv() program [C++]
-    └── ostep_code/            <- OSTEP Chapter 2-5 demo code (finite loops) [C++]
-        ├── common.h
-        ├── cpu.cpp
-        ├── mem.cpp
-        ├── threads.cpp
-        └── io.cpp
+Γö£ΓöÇΓöÇ README.md                  <- Main repository overview
+Γöé
+Γö£ΓöÇΓöÇ Lab1/                      <- Lab Assignment 1
+Γöé   Γö£ΓöÇΓöÇ README.md              <- Overview of commands, shell, GCC, OSTEP API & Booting
+Γöé   Γö£ΓöÇΓöÇ OS_Lab_2024UCP1566.docx<- Complete assignment report
+Γöé   Γö£ΓöÇΓöÇ ostep_code/            <- C implementations of OSTEP CPU API (p1.c - p4.c)
+Γöé   ΓööΓöÇΓöÇ screenshots/           <- Real terminal output logs & screenshots
+Γöé
+ΓööΓöÇΓöÇ Lab2/                      <- Lab Assignment 2
+    Γö£ΓöÇΓöÇ README.md              <- Full answers, Q1 Notebook Guide & Q2-Q6 code details
+    Γö£ΓöÇΓöÇ q2_proc_monitor.sh     <- /proc filesystem performance monitoring script
+    Γö£ΓöÇΓöÇ q3_fork.cpp            <- Child process creation using fork() [C++]
+    Γö£ΓöÇΓöÇ q4_aslr.sh             <- Shell script for enabling/disabling ASLR
+    Γö£ΓöÇΓöÇ q5_variable_sharing.cpp<- Parent/Child variable sharing & memory address analysis [C++]
+    Γö£ΓöÇΓöÇ q6_syscalls.cpp        <- Combined fork(), wait(), exit(), and execv() program [C++]
+    ΓööΓöÇΓöÇ ostep_code/            <- OSTEP Chapter 2-5 demo code (finite loops) [C++]
+        Γö£ΓöÇΓöÇ common.h
+        Γö£ΓöÇΓöÇ cpu.cpp
+        Γö£ΓöÇΓöÇ mem.cpp
+        Γö£ΓöÇΓöÇ threads.cpp
+        ΓööΓöÇΓöÇ io.cpp
 ```
 
 ---
 
-## 🚀 Lab Summaries Quick Access
+## ≡ƒÜÇ Lab Summaries Quick Access
 
 | Lab Folder | Focus Area | Key Concepts | Status |
 |---|---|---|---|
-| **[Lab1/](./Lab1)** | Linux Basics, Commands, GCC & Booting | Linux Commands, Shell, GCC flags, OSTEP Process API, Booting | ✅ Completed |
-| **[Lab2/](./Lab2)** | OSTEP Summaries, /proc, Fork, ASLR, COW | OSTEP Ch 1-4, /proc monitoring, Process Creation, ASLR, Memory Sharing | ✅ Completed |
+| **[Lab1/](./Lab1)** | Linux Basics, Commands, GCC & Booting | Linux Commands, Shell, GCC flags, OSTEP Process API, Booting | Γ£à Completed |
+| **[Lab2/](./Lab2)** | OSTEP Summaries, /proc, Fork, ASLR, COW | OSTEP Ch 1-4, /proc monitoring, Process Creation, ASLR, Memory Sharing | Γ£à Completed |
 
 ---
 
-## 🛠️ How to Compile & Run Code
+## ≡ƒ¢á∩╕Å How to Compile & Run Code
 
 ### Lab 2 Examples:
 ```bash
